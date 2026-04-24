@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pranjal Jain — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #faf8f5;
+  --warm: #f5f1eb;
+  --stone: #e8e3da;
+  --border: #ddd8cf;
+  --text: #2a2520;
+  --muted: #8a8278;
+  --accent: #7c6f5e;
+  --link: #5a7a6a;
+  --radius: 14px;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Outfit', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+::selection { background: #c9d9cf; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.4rem 5vw;
+  background: rgba(250,248,245,0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 2.4rem; list-style: none; }
+.nav-links a {
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-resume-btn {
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--text);
+  text-decoration: none;
+  background: transparent;
+  transition: background 0.2s, border-color 0.2s;
+}
+.nav-resume-btn:hover { background: var(--warm); border-color: var(--accent); }
+
+/* HOME */
+#home {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  align-items: center;
+  gap: 4rem;
+  padding: 10rem 5vw 5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.home-greeting {
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--link);
+  margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: 10px;
+}
+.home-greeting::before {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--link);
+  display: inline-block;
+}
+h1 {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(3.2rem, 5vw, 5.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 0.6rem;
+}
+h1 em { font-style: italic; color: var(--accent); }
+.home-role {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 1.8rem;
+}
+.home-desc {
+  font-size: 0.95rem;
+  color: var(--muted);
+  max-width: 460px;
+  line-height: 1.85;
+  margin-bottom: 2.5rem;
+}
+.home-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-fill {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 13px 28px;
+  background: var(--text);
+  color: var(--cream);
+  border-radius: 100px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  display: inline-block;
+}
+.btn-fill:hover { opacity: 0.78; }
+.btn-line {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 13px 28px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-line:hover { border-color: var(--accent); background: var(--warm); }
+
+.home-photo-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 1rem;
+}
+.photo-frame {
+  position: relative;
+  width: 360px;
+}
+.photo-frame::before {
+  content: '';
+  position: absolute;
+  top: 16px; left: 16px;
+  width: 100%; height: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  z-index: 0;
+}
+.photo-frame img {
+  position: relative; z-index: 1;
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  filter: sepia(6%) contrast(0.97) brightness(1.02);
+  display: block;
+}
+.photo-placeholder {
+  position: relative; z-index: 1;
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--warm);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 12px;
+}
+.photo-placeholder svg { opacity: 0.22; }
+.photo-placeholder span {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+  padding: 0 1.5rem;
+  line-height: 1.7;
+}
+
+/* SHARED */
+.section {
+  padding: 6rem 5vw;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+  margin-bottom: 3.5rem;
+}
+.section-num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--border);
+}
+h2 {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: var(--text);
+}
+.section-divider {
+  width: 100%; height: 1px;
+  background: var(--border);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ABOUT */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.about-lead {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+.about-body {
+  font-size: 0.93rem;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 1rem;
+}
+.about-stats { display: flex; flex-direction: column; gap: 0; }
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--stone);
+}
+.stat-row:first-child { border-top: 1px solid var(--stone); }
+.stat-label-s {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.stat-val {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--text);
+}
+.stat-val span {
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  color: var(--muted);
+  margin-left: 4px;
+}
+
+/* SKILLS */
+.skills-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+.skill-group-title {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--link);
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--stone);
+}
+.skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tag {
+  font-size: 0.82rem;
+  font-weight: 300;
+  padding: 6px 14px;
+  background: var(--warm);
+  border: 1px solid var(--stone);
+  border-radius: 100px;
+  color: var(--text);
+  transition: background 0.2s, border-color 0.2s;
+}
+.tag:hover { background: var(--stone); border-color: var(--border); }
+.tag.featured { background: #e8ede9; border-color: #c5d4c8; color: #3a5a44; }
+
+/* EXPERIENCE */
+.timeline { display: flex; flex-direction: column; }
+.exp-row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 3rem;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--stone);
+}
+.exp-row:first-child { border-top: 1px solid var(--stone); }
+.exp-period {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.exp-org {
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--link);
+  letter-spacing: 0.04em;
+}
+.exp-title-s {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: var(--text);
+  margin-bottom: 0.9rem;
+  line-height: 1.3;
+}
+.exp-points { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+.exp-points li {
+  font-size: 0.88rem;
+  color: var(--muted);
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.75;
+}
+.exp-points li::before {
+  content: '·';
+  position: absolute; left: 0;
+  color: var(--accent);
+  font-size: 1.2rem; line-height: 1.4;
+}
+
+/* PROJECTS */
+.proj-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+}
+.proj-card {
+  background: var(--warm);
+  border: 1px solid var(--stone);
+  border-radius: var(--radius);
+  padding: 2rem 1.8rem;
+  display: flex; flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s, border-color 0.2s, transform 0.25s;
+}
+.proj-card:hover { background: var(--stone); border-color: var(--border); transform: translateY(-3px); }
+.proj-idx {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.3rem;
+}
+.proj-name {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: var(--text);
+  margin-bottom: 0.7rem;
+  line-height: 1.3;
+}
+.proj-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.78;
+  flex: 1;
+  margin-bottom: 1.5rem;
+}
+.proj-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.2rem; }
+.proj-tag {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--muted);
+}
+.proj-links { display: flex; gap: 1rem; }
+.proj-link {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+.proj-link:hover { border-color: var(--link); }
+
+/* RESUME */
+.resume-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.big-q {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--stone);
+}
+.resume-text-block p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.85;
+  margin-bottom: 2rem;
+}
+.resume-card {
+  background: var(--warm);
+  border: 1px solid var(--stone);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+}
+.resume-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--text);
+  margin-bottom: 1.2rem;
+}
+.resume-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--stone);
+  font-size: 0.85rem;
+}
+.resume-row:last-child { border-bottom: none; }
+.resume-row-label { color: var(--muted); }
+.resume-row-val { font-weight: 400; color: var(--text); }
+
+/* CONTACT */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.contact-intro {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.contact-sub {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.85;
+  margin-bottom: 2rem;
+}
+.contact-email {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+.contact-email:hover { border-color: var(--link); }
+.contact-links-grid { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 2rem; }
+.social-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 1.2rem;
+  background: var(--warm);
+  border: 1px solid var(--stone);
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.18s, border-color 0.18s;
+}
+.social-row:hover { background: var(--stone); border-color: var(--border); }
+.social-name { font-size: 0.88rem; font-weight: 400; color: var(--text); }
+.social-handle { font-size: 0.75rem; color: var(--muted); }
+.social-arrow { color: var(--muted); font-size: 0.85rem; }
+
+footer {
+  border-top: 1px solid var(--stone);
+  padding: 2.5rem 5vw;
+  display: flex; justify-content: space-between; align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+footer p { font-size: 0.78rem; color: var(--muted); }
+
+.reveal {
+  opacity: 0; transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 860px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links, .nav-resume-btn { display: none; }
+  #home { grid-template-columns: 1fr; padding: 8rem 1.5rem 4rem; gap: 3rem; }
+  .photo-frame { width: 240px; }
+  .section { padding: 4rem 1.5rem; }
+  .about-grid, .resume-wrap, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .skills-col { grid-template-columns: 1fr; }
+  .exp-row { grid-template-columns: 1fr; gap: 0.5rem; }
+  .proj-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 6px; padding: 2rem 1.5rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#home">Pranjal Jain</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-resume-btn" href="#resume">Resume</a>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <div class="home-text reveal">
+    <div class="home-greeting">Hello, I'm</div>
+    <h1>Pranjal<br><em>Jain</em></h1>
+    <p class="home-role">Full Stack · AI/ML · IoT Engineer</p>
+    <p class="home-desc">
+      CS undergraduate at SKIT Jaipur, building at the intersection of web engineering, machine learning,
+      and connected systems. SIH 2024 finalist &amp; IIT Delhi research intern.
+    </p>
+    <div class="home-ctas">
+      <a href="#contact" class="btn-fill">Get in touch</a>
+      <a href="#projects" class="btn-line">View work</a>
+    </div>
+  </div>
+
+  <div class="home-photo-wrap reveal">
+    <div class="photo-frame">
+      <!--
+        LOCAL IMAGE NOTE:
+        The path below is your local Windows path. This works only when you open
+        the HTML file directly on YOUR computer. To host online, upload the image
+        and replace src with the hosted URL (e.g. Cloudinary, GitHub, etc.)
+      -->
+      <img
+        src="E:\OneDrive\Pictures\Camera Roll\WhatsApp Image 2026-04-25 at 12.41.35 AM.jpeg"
+        alt="Pranjal Jain"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+      />
+      <div class="photo-placeholder" style="display:none;">
+        <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+        <span>Your photo appears here<br/>when opened locally</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-head reveal">
+    <span class="section-num">01</span>
+    <h2>About</h2>
+  </div>
+  <div class="about-grid">
+    <div class="reveal">
+      <p class="about-lead">I build things that sit at the edge of software and intelligence — web apps, AI pipelines, and embedded systems.</p>
+      <p class="about-body">Currently pursuing B.Tech in Computer Science at Swami Keshvanand Institute of Technology, Jaipur (graduating 2027). I've interned at Indian Institute of Technology, Delhi (IIT  Delhi ), Encrypta, and NETESENZ Technologies — working on everything from cardiac signal classification with CNN models to NLP-powered lead generation platforms.</p>
+      <p class="about-body">Outside of code, I coordinate technical events, have presented startup ideas at IHMR, and compete in national-level hackathons.</p>
+    </div>
+    <div class="about-stats reveal">
+      <div class="stat-row">
+        <span class="stat-label-s">CGPA</span>
+        <span class="stat-val">9.0 <span>/ 10</span></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label-s">Internships</span>
+        <span class="stat-val">4 <span>completed</span></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label-s">Resumes Analyzed</span>
+        <span class="stat-val">500+ <span>cases</span></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label-s">Efficiency Gained</span>
+        <span class="stat-val">40% <span>reduction</span></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label-s">Location</span>
+        <span class="stat-val" style="font-size:1.1rem; line-height:1.2;">Jaipur,<br>Rajasthan</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="section-head reveal">
+    <span class="section-num">02</span>
+    <h2>Skills</h2>
+  </div>
+  <div class="skills-col">
+    <div class="reveal">
+      <div class="skill-group-title">Languages</div>
+      <div class="skill-tags">
+        <span class="tag featured">Python</span>
+        <span class="tag featured">JavaScript</span>
+        <span class="tag">Java</span>
+        <span class="tag">C</span>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="skill-group-title">Frontend</div>
+      <div class="skill-tags">
+        <span class="tag featured">React.js</span>
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">Bootstrap</span>
+        <span class="tag">Axios</span>
+        <span class="tag">React Router</span>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="skill-group-title">Backend &amp; Databases</div>
+      <div class="skill-tags">
+        <span class="tag featured">Flask</span>
+        <span class="tag">SQLAlchemy</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">REST APIs</span>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="skill-group-title">AI / ML</div>
+      <div class="skill-tags">
+        <span class="tag featured">NLP</span>
+        <span class="tag featured">Deep Learning</span>
+        <span class="tag featured">CNN</span>
+        <span class="tag">OpenAI API</span>
+        <span class="tag">CWT Scalograms</span>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="skill-group-title">Core CS</div>
+      <div class="skill-tags">
+        <span class="tag">DSA</span>
+        <span class="tag">OOP</span>
+        <span class="tag">DBMS</span>
+        <span class="tag">System Design</span>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="skill-group-title">Cloud &amp; Tools</div>
+      <div class="skill-tags">
+        <span class="tag">AWS (Basics)</span>
+        <span class="tag">DBeaver</span>
+        <span class="tag">Git</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="section-head reveal">
+    <span class="section-num">03</span>
+    <h2>Experience</h2>
+  </div>
+  <div class="timeline">
+    <div class="exp-row reveal">
+      <div>
+        <div class="exp-period">Apr 2026 — Jun 2026</div>
+        <div class="exp-org">IIT Delhi · IEEE</div>
+      </div>
+      <div>
+        <div class="exp-title-s">Research &amp; Development Intern</div>
+        <ul class="exp-points">
+          <li>Engineered a CNN-based deep learning model on CWT scalograms to classify 5 cardiac conditions from PCG signals</li>
+          <li>Enhanced model interpretability using time-frequency representations, improving clinical usability</li>
+          <li>Achieved high-accuracy multiclass classification for early-stage heart disease detection</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-row reveal">
+      <div>
+        <div class="exp-period">Jan 2026 — Mar 2026</div>
+        <div class="exp-org">Encrypta · Bengaluru</div>
+      </div>
+      <div>
+        <div class="exp-title-s">Software Development Intern</div>
+        <ul class="exp-points">
+          <li>Designed an AI agent handling 100+ user queries/day using NLP-based response generation</li>
+          <li>Optimized response accuracy and reduced manual intervention through automated workflows</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-row reveal">
+      <div>
+        <div class="exp-period">Jun 2025 — Aug 2025</div>
+        <div class="exp-org">NETESENZ Technologies LLP</div>
+      </div>
+      <div>
+        <div class="exp-title-s">Software Development Intern</div>
+        <ul class="exp-points">
+          <li>Architected Resume Gap Analyzer using NLP to compare resumes with job descriptions across 500+ cases</li>
+          <li>Deployed AI-powered GPT Funnel platform, reducing manual effort by 40% in lead generation workflows</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-row reveal">
+      <div>
+        <div class="exp-period">Jun 2024 — Jul 2024</div>
+        <div class="exp-org">In-House Internship · Jaipur</div>
+      </div>
+      <div>
+        <div class="exp-title-s">Web Development Intern</div>
+        <ul class="exp-points">
+          <li>Built responsive frontend interfaces using React, HTML, CSS, and JavaScript with routing and API integration across multiple UI workflows</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="section-head reveal">
+    <span class="section-num">04</span>
+    <h2>Projects</h2>
+  </div>
+  <div class="proj-grid">
+    <a href="https://github.com/pranjalprog/resume_gap_analyser" target="_blank" class="proj-card reveal">
+      <div class="proj-idx">01 · NLP</div>
+      <div class="proj-name">Resume Gap Analyzer</div>
+      <p class="proj-desc">NLP system analyzing 500+ resumes against job descriptions. Identifies skill gaps and generates learning paths with course recommendations.</p>
+      <div class="proj-stack">
+        <span class="proj-tag">Python</span>
+        <span class="proj-tag">NLP</span>
+        <span class="proj-tag">Flask</span>
+      </div>
+      <div class="proj-links"><span class="proj-link">GitHub ↗</span></div>
+    </a>
+    <a href="https://www.gtmfunnels.ai/" target="_blank" class="proj-card reveal">
+      <div class="proj-idx">02 · AI Platform</div>
+      <div class="proj-name">GPT Funnel</div>
+      <p class="proj-desc">AI-powered lead generation and content workflow platform. Intelligent funnel optimization increased marketing efficiency by 40%.</p>
+      <div class="proj-stack">
+        <span class="proj-tag">OpenAI API</span>
+        <span class="proj-tag">React</span>
+        <span class="proj-tag">Flask</span>
+      </div>
+      <div class="proj-links">
+        <span class="proj-link">Live ↗</span>
+        <span class="proj-link">GitHub ↗</span>
+      </div>
+    </a>
+    <div class="proj-card reveal">
+      <div class="proj-idx">03 · Full Stack</div>
+      <div class="proj-name">Job Tracker</div>
+      <p class="proj-desc">React application to manage 100+ job applications and interview stages. Centralised status management with an intuitive, clean interface.</p>
+      <div class="proj-stack">
+        <span class="proj-tag">React</span>
+        <span class="proj-tag">JavaScript</span>
+        <span class="proj-tag">CSS</span>
+      </div>
+      <div class="proj-links"><span class="proj-link">In progress</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- RESUME -->
+<section class="section" id="resume">
+  <div class="section-head reveal">
+    <span class="section-num">05</span>
+    <h2>Resume</h2>
+  </div>
+  <div class="resume-wrap">
+    <div class="resume-text-block reveal">
+      <p class="big-q">"A 9.0 CGPA, 4 internships, and research at IIT Delhi — before graduating."</p>
+      <p>My resume covers my academic journey, internship experience, technical skills, and key achievements in a single page. Download it for a complete picture.</p>
+      <!-- Replace href with your actual resume PDF URL -->
+      <a href="#" class="btn-fill" download>Download Resume PDF</a>
+      <p style="font-size:0.75rem; color:var(--muted); margin-top:1rem; margin-bottom:0;">
+        Replace the link above with your hosted resume URL before publishing.
+      </p>
+    </div>
+    <div class="resume-card reveal">
+      <div class="resume-card-title">Quick overview</div>
+      <div class="resume-row">
+        <span class="resume-row-label">Degree</span>
+        <span class="resume-row-val">B.Tech CSE</span>
+      </div>
+      <div class="resume-row">
+        <span class="resume-row-label">Institute</span>
+        <span class="resume-row-val">SKIT, Jaipur</span>
+      </div>
+      <div class="resume-row">
+        <span class="resume-row-label">CGPA</span>
+        <span class="resume-row-val">9.0 / 10</span>
+      </div>
+      <div class="resume-row">
+        <span class="resume-row-label">Graduation</span>
+        <span class="resume-row-val">May 2027</span>
+      </div>
+      <div class="resume-row">
+        <span class="resume-row-label">Specialisation</span>
+        <span class="resume-row-val">Full Stack · AI/ML · IoT</span>
+      </div>
+      <div class="resume-row">
+        <span class="resume-row-label">Hackathon</span>
+        <span class="resume-row-val">SIH 2024 Finalist</span>
+      </div>
+      <div class="resume-row">
+        <span class="resume-row-label">Research</span>
+        <span class="resume-row-val">IIT Delhi · IEEE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="section-head reveal">
+    <span class="section-num">06</span>
+    <h2>Contact</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="reveal">
+      <p class="contact-intro">Have a project, research idea, or opportunity? I'd love to hear from you.</p>
+      <p class="contact-sub">Open to internships, research collaborations, and full-time roles starting 2027. Response time is usually within a day.</p>
+      <a href="mailto:pranjaljain19022005@gmail.com" class="contact-email">pranjaljain19022005@gmail.com</a>
+    </div>
+    <div class="contact-links-grid reveal">
+      <a href="https://www.linkedin.com/in/pranjal-jain-733801354" target="_blank" class="social-row">
+        <span class="social-name">LinkedIn</span>
+        <span class="social-handle">pranjal-jain-733801354</span>
+        <span class="social-arrow">↗</span>
+      </a>
+      <a href="https://github.com/pranjalprog" target="_blank" class="social-row">
+        <span class="social-name">GitHub</span>
+        <span class="social-handle">pranjalprog</span>
+        <span class="social-arrow">↗</span>
+      </a>
+      <a href="https://leetcode.com/u/pranjalj908/" target="_blank" class="social-row">
+        <span class="social-name">LeetCode</span>
+        <span class="social-handle">pranjalj908</span>
+        <span class="social-arrow">↗</span>
+      </a>
+      <a href="https://www.geeksforgeeks.org/profile/b2311v0y" target="_blank" class="social-row">
+        <span class="social-name">GeeksforGeeks</span>
+        <span class="social-handle">b2311v0y</span>
+        <span class="social-arrow">↗</span>
+      </a>
+      <a href="https://www.hackerrank.com/profile/pranjaljain19021" target="_blank" class="social-row">
+        <span class="social-name">HackerRank</span>
+        <span class="social-handle">pranjaljain19021</span>
+        <span class="social-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Pranjal Jain</p>
+  <p>SKIT Jaipur · B.Tech CSE · 2027</p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
